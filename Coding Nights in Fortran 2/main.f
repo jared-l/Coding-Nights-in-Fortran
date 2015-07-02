@@ -17,19 +17,19 @@ C
       end
       
       subroutine initialize_hamiltonian(hamiltonian, rows, columns)
-          integer rows, columns, scoeff, coeff1, coeff2
+          integer rows, columns, midpt, coeff1, coeff2
           real hamiltonian(rows, columns)
           
-          scoeff = (rows - 1)/2
+          midpt = (rows - 1)/2
           
           do i=1,rows
               do j=1, columns
                   ! Fill these in with slater determinants
                   hamiltonian(i,j) = -1
-                  coeff1 = i - j + scoeff + 2
-                  coeff2 = j - i + scoeff + 2
+                  coeff1 = i - j + midpt + 2
+                  coeff2 = j - i + midpt + 2
                   
-                  if (coeff1 .lt. scoeff .or. coeff2 .lt. scoeff)
+                  if (coeff1 .lt. midpt .or. coeff2 .lt. midpt)
      +            then
                       hamiltonian(i,j) = 0
                   endif
